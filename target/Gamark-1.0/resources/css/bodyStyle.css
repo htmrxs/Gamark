@@ -1,0 +1,21 @@
+body
+{
+    margin :0;
+    background-color: #2C2C2C;  
+    font-family: 'Dungeon';
+    font-size: 22px;
+    height: 100%; 
+    width: 100%;
+}
+html, body 
+{
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+
+input:focus 
+{   
+    outline:none;
+}
