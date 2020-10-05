@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gamark.mb;
 
 import com.gamark.ejb.CpuFacade;
@@ -13,25 +8,49 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 
-/**
- *
- * @author Maraoui
- */
 @Named(value = "cpu")
 @SessionScoped
 public class CpuMB implements Serializable {
 
+    private String brand="Intel";
+    private String search="%%";
+    private String ord="Asc";
+
+    public String getOrd() {
+        return ord;
+    }
+
+    public void setOrd(String ord) {
+        this.ord = ord;
+    }
+
+    public String getSearch() {
+        return search.substring(1, search.length()-1);
+    }
+
+    public void setSearch(String search) {
+        search = search.replaceAll("[^a-zA-Z0-9\\s\\-]", "");
+        this.search = "%"+search+"%";
+    }
+    
+    public void setBrand(String brand)
+    {
+        this.brand=brand;
+    }
+    
+    public String getBrand()
+    {
+        return brand;
+    }
+    
     @EJB
     private CpuFacade cpuEJB;
     
-    /**
-     * Creates a new instance of CpuMB
-     */
     public CpuMB() {
     }
     
-    public List<Cpu> getCpus() {
-        return cpuEJB.findAll();
+    public List<Cpu> getByBrand()
+    {
+        return cpuEJB.findByBrand(brand,ord,search);
     }
-    
 }

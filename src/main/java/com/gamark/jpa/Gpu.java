@@ -26,6 +26,8 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Gpu.findAll", query = "SELECT g FROM Gpu g"),
     @NamedQuery(name = "Gpu.findById", query = "SELECT g FROM Gpu g WHERE g.id = :id"),
+    @NamedQuery(name = "Gpu.findByBrandASC", query = "SELECT c FROM Gpu c WHERE c.brand = :brand AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price ASC"),
+    @NamedQuery(name = "Gpu.findByBrandDESC", query = "SELECT c FROM Gpu c WHERE c.brand = :brand AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price DESC"),
     @NamedQuery(name = "Gpu.findByBrand", query = "SELECT g FROM Gpu g WHERE g.brand = :brand"),
     @NamedQuery(name = "Gpu.findByGen", query = "SELECT g FROM Gpu g WHERE g.gen = :gen"),
     @NamedQuery(name = "Gpu.findByName", query = "SELECT g FROM Gpu g WHERE g.name = :name"),

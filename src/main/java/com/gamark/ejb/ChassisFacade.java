@@ -6,6 +6,8 @@
 package com.gamark.ejb;
 
 import com.gamark.jpa.Chassis;
+import com.gamark.jpa.Psu;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +30,18 @@ public class ChassisFacade extends AbstractFacade<Chassis> {
     public ChassisFacade() {
         super(Chassis.class);
     }
+    
+    public List<Chassis> findByBrand(String brand,String ord,String search) {
+        if(ord.equals("Asc"))
+        {return em.createNamedQuery("Chassis.findByBrandASC")
+        .setParameter("brand", brand)
+        .setParameter("search", search)
+        .getResultList();
+        }
+        return em.createNamedQuery("Chassis.findByBrandDESC")
+        .setParameter("brand", brand)
+        .setParameter("search", search)
+        .getResultList(); 
+    } 
     
 }

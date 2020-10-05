@@ -1,9 +1,11 @@
 var nextStep=document.getElementById("nextS");
 var prevStep=document.getElementById("prevS");
+
+var Index=0;
+
 prevStep.style.display="none";
-var Index = 0;
 var progIndex=0;
-showDivs(Index);
+showDivs(window.Index);
 
 function nStep()
 {
@@ -11,23 +13,24 @@ function nStep()
     {
         if(progIndex===Index)
             progIndex+=1;
-        showDivs(Index += 1);
+        localStorage.setItem('Index', localStorage.getItem('Index')+1);
+        Index=Index+1;
         prevStep.style.display="block";
         if(Index===6)
         {
             nextStep.style.display="none";
         }
-        console.log(nextStep.toString());
     }
 }
 
 function pStep()
 {
-    if(Index>0)
+    if(localStorage.getItem('Index')>0)
     {
-        showDivs(Index-=1)
+        localStorage.setItem('Index', localStorage.getItem('Index')-1);
+        showDivs(localStorage.getItem('Index')===1);
         nextStep.style.display="block";
-        if(Index===0)
+        if(localStorage.getItem('Index')===0)
         {
             prevStep.style.display="none";
         }
@@ -43,5 +46,5 @@ function showDivs(n)
     for(i=progIndex+1; i<dots.length;i++)
         dots[i].setAttribute('src', "resources/img/home/dotempty.png");
 
-    dots[Index].setAttribute('src', "resources/img/home/dotcurrent.png");
+    dots[localStorage.getItem('Index')].setAttribute('src', "resources/img/home/dotcurrent.png");
 }

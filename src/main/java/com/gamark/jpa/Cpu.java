@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gamark.jpa;
 
 import java.io.Serializable;
@@ -17,16 +12,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-/**
- *
- * @author Maraoui
- */
 @Entity
 @Table(name = "CPU")
 @NamedQueries({
     @NamedQuery(name = "Cpu.findAll", query = "SELECT c FROM Cpu c"),
     @NamedQuery(name = "Cpu.findById", query = "SELECT c FROM Cpu c WHERE c.id = :id"),
-    @NamedQuery(name = "Cpu.findByBrand", query = "SELECT c FROM Cpu c WHERE c.brand = :brand"),
+    @NamedQuery(name = "Cpu.findByBrandASC", query = "SELECT c FROM Cpu c WHERE c.brand = :brand AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price ASC"),
+    @NamedQuery(name = "Cpu.findByBrandDESC", query = "SELECT c FROM Cpu c WHERE c.brand = :brand AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price DESC"),
     @NamedQuery(name = "Cpu.findByGen", query = "SELECT c FROM Cpu c WHERE c.gen = :gen"),
     @NamedQuery(name = "Cpu.findByName", query = "SELECT c FROM Cpu c WHERE c.name = :name"),
     @NamedQuery(name = "Cpu.findByDescription", query = "SELECT c FROM Cpu c WHERE c.description = :description"),

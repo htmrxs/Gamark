@@ -2,7 +2,8 @@
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link href="resources/css/bodyStyle.css" rel="stylesheet" type="text/css"/>
@@ -20,9 +21,18 @@
                 <a class="nav-bar-icon" href="https://google.com">
                     <img src="resources/img/navbar/favorite.png"/>
                 </a>
-                <a class="nav-bar-icon" href="https://google.com">
+<!--                <a class="nav-bar-icon" href="faces/login.xhtml">
                     <img src="resources/img/navbar/user.png"/>
-                </a>
+                </a>-->
+                <div class="dropdown">
+                    <a class="nav-bar-icon" href="faces/login.xhtml">
+                        <img src="resources/img/navbar/user.png"/>
+                    </a>
+                    <div class="dropdown-content">
+                      <a href="faces/profile.xhtml">My profile</a>
+                      <a href="faces/home.xhtml">Sign Out</a>
+                    </div>
+                  </div>
             </div>
         </div>
         <ui:insert name="content"/>

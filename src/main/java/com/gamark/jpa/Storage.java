@@ -26,6 +26,8 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Storage.findAll", query = "SELECT s FROM Storage s"),
     @NamedQuery(name = "Storage.findById", query = "SELECT s FROM Storage s WHERE s.id = :id"),
+    @NamedQuery(name = "Storage.findByTypeASC", query = "SELECT c FROM Storage c WHERE c.type = :type AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price ASC"),
+    @NamedQuery(name = "Storage.findByTypeDESC", query = "SELECT c FROM Storage c WHERE c.type = :type AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price DESC"),
     @NamedQuery(name = "Storage.findByType", query = "SELECT s FROM Storage s WHERE s.type = :type"),
     @NamedQuery(name = "Storage.findByCapacity", query = "SELECT s FROM Storage s WHERE s.capacity = :capacity"),
     @NamedQuery(name = "Storage.findByName", query = "SELECT s FROM Storage s WHERE s.name = :name"),

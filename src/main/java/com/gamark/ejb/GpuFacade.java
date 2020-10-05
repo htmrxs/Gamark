@@ -6,6 +6,7 @@
 package com.gamark.ejb;
 
 import com.gamark.jpa.Gpu;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,18 @@ public class GpuFacade extends AbstractFacade<Gpu> {
     public GpuFacade() {
         super(Gpu.class);
     }
+    
+    public List<Gpu> findByBrand(String brand,String ord,String search) {
+        if(ord.equals("Asc"))
+        {return em.createNamedQuery("Gpu.findByBrandASC")
+        .setParameter("brand", brand)
+        .setParameter("search", search)
+        .getResultList();
+        }
+        return em.createNamedQuery("Gpu.findByBrandDESC")
+        .setParameter("brand", brand)
+        .setParameter("search", search)
+        .getResultList(); 
+    } 
     
 }

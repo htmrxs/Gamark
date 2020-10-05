@@ -26,6 +26,8 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Psu.findAll", query = "SELECT p FROM Psu p"),
     @NamedQuery(name = "Psu.findById", query = "SELECT p FROM Psu p WHERE p.id = :id"),
+    @NamedQuery(name = "Psu.findByBrandASC", query = "SELECT c FROM Psu c WHERE c.brand = :brand AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price ASC"),
+    @NamedQuery(name = "Psu.findByBrandDESC", query = "SELECT c FROM Psu c WHERE c.brand = :brand AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price DESC"),
     @NamedQuery(name = "Psu.findByBrand", query = "SELECT p FROM Psu p WHERE p.brand = :brand"),
     @NamedQuery(name = "Psu.findByWattage", query = "SELECT p FROM Psu p WHERE p.wattage = :wattage"),
     @NamedQuery(name = "Psu.findByName", query = "SELECT p FROM Psu p WHERE p.name = :name"),

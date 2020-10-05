@@ -26,6 +26,8 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Chassis.findAll", query = "SELECT c FROM Chassis c"),
     @NamedQuery(name = "Chassis.findById", query = "SELECT c FROM Chassis c WHERE c.id = :id"),
+    @NamedQuery(name = "Chassis.findByBrandASC", query = "SELECT c FROM Chassis c WHERE c.brand = :brand AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price ASC"),
+    @NamedQuery(name = "Chassis.findByBrandDESC", query = "SELECT c FROM Chassis c WHERE c.brand = :brand AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price DESC"),
     @NamedQuery(name = "Chassis.findByBrand", query = "SELECT c FROM Chassis c WHERE c.brand = :brand"),
     @NamedQuery(name = "Chassis.findBySize", query = "SELECT c FROM Chassis c WHERE c.size = :size"),
     @NamedQuery(name = "Chassis.findByName", query = "SELECT c FROM Chassis c WHERE c.name = :name"),

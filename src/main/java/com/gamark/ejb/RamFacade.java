@@ -6,6 +6,7 @@
 package com.gamark.ejb;
 
 import com.gamark.jpa.Ram;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,18 @@ public class RamFacade extends AbstractFacade<Ram> {
     public RamFacade() {
         super(Ram.class);
     }
+    
+    public List<Ram> findByBrand(String brand,String ord,String search) {
+        if(ord.equals("Asc"))
+        {return em.createNamedQuery("Ram.findByBrandASC")
+        .setParameter("brand", brand)
+        .setParameter("search", search)
+        .getResultList();
+        }
+        return em.createNamedQuery("Ram.findByBrandDESC")
+        .setParameter("brand", brand)
+        .setParameter("search", search)
+        .getResultList(); 
+    } 
     
 }

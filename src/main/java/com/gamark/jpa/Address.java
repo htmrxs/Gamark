@@ -27,10 +27,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Address.findAll", query = "SELECT a FROM Address a"),
     @NamedQuery(name = "Address.findById", query = "SELECT a FROM Address a WHERE a.id = :id"),
     @NamedQuery(name = "Address.findByCountry", query = "SELECT a FROM Address a WHERE a.country = :country"),
-    @NamedQuery(name = "Address.findByRegion", query = "SELECT a FROM Address a WHERE a.region = :region"),
-    @NamedQuery(name = "Address.findByCity", query = "SELECT a FROM Address a WHERE a.city = :city"),
-    @NamedQuery(name = "Address.findByStreet", query = "SELECT a FROM Address a WHERE a.street = :street"),
-    @NamedQuery(name = "Address.findByZip", query = "SELECT a FROM Address a WHERE a.zip = :zip")})
+    @NamedQuery(name = "Address.findByStreet", query = "SELECT a FROM Address a WHERE a.street = :street")})
 public class Address implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,17 +39,9 @@ public class Address implements Serializable {
     @Size(max = 50)
     @Column(name = "COUNTRY")
     private String country;
-    @Size(max = 50)
-    @Column(name = "REGION")
-    private String region;
-    @Size(max = 50)
-    @Column(name = "CITY")
-    private String city;
     @Size(max = 100)
     @Column(name = "STREET")
     private String street;
-    @Column(name = "ZIP")
-    private Integer zip;
 
     public Address() {
     }
@@ -77,36 +66,12 @@ public class Address implements Serializable {
         this.country = country;
     }
 
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getStreet() {
         return street;
     }
 
     public void setStreet(String street) {
         this.street = street;
-    }
-
-    public Integer getZip() {
-        return zip;
-    }
-
-    public void setZip(Integer zip) {
-        this.zip = zip;
     }
 
     @Override

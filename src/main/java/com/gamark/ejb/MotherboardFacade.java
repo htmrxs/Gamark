@@ -6,6 +6,7 @@
 package com.gamark.ejb;
 
 import com.gamark.jpa.Motherboard;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,18 @@ public class MotherboardFacade extends AbstractFacade<Motherboard> {
     public MotherboardFacade() {
         super(Motherboard.class);
     }
+    
+    public List<Motherboard> findByBrand(String brand,String ord,String search) {
+        if(ord.equals("Asc"))
+        {return em.createNamedQuery("Motherboard.findByBrandASC")
+        .setParameter("brand", brand)
+        .setParameter("search", search)
+        .getResultList();
+        }
+        return em.createNamedQuery("Motherboard.findByBrandDESC")
+        .setParameter("brand", brand)
+        .setParameter("search", search)
+        .getResultList(); 
+    }   
     
 }

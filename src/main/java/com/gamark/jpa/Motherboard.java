@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 /**
@@ -26,6 +27,8 @@ import javax.validation.constraints.Size;
 @NamedQueries({
     @NamedQuery(name = "Motherboard.findAll", query = "SELECT m FROM Motherboard m"),
     @NamedQuery(name = "Motherboard.findById", query = "SELECT m FROM Motherboard m WHERE m.id = :id"),
+    @NamedQuery(name = "Motherboard.findByBrandASC", query = "SELECT c FROM Motherboard c WHERE c.brand = :brand AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price ASC"),
+    @NamedQuery(name = "Motherboard.findByBrandDESC", query = "SELECT c FROM Motherboard c WHERE c.brand = :brand AND UPPER(c.name) LIKE UPPER(:search) ORDER BY c.price DESC"),
     @NamedQuery(name = "Motherboard.findByBrand", query = "SELECT m FROM Motherboard m WHERE m.brand = :brand"),
     @NamedQuery(name = "Motherboard.findBySize", query = "SELECT m FROM Motherboard m WHERE m.size = :size"),
     @NamedQuery(name = "Motherboard.findByName", query = "SELECT m FROM Motherboard m WHERE m.name = :name"),
